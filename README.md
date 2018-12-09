@@ -3,7 +3,7 @@
 Create custom meta by define array.
 
 Can include to theme for theme developer.
-
+```
 $metas = array(
     [
         'post_type' => 'post',
@@ -31,4 +31,4 @@ $metas = array(
         )
     ]
 );
-
+```
