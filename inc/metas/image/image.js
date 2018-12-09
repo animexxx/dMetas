@@ -2,7 +2,8 @@
     var frame;
     $(document).ready(function () {
         $('.upload_image_button').on('click', function () {
-
+            var hidden_input = $(this).parent().find('.upload_image');
+            var img_up = $(this).parent().find('.upload_image_img');
             // If the media frame already exists, reopen it.
             if (frame) {
                 frame.open();
@@ -22,9 +23,9 @@
             // @see media.view.MediaFrame.Post.mainInsertToolbar()
             frame.on('select', function () {
                 var attachment = frame.state().get('selection').first().toJSON();
-                $('.upload_image').val(attachment.url);
-                $('.upload_image_img').show();
-                $('.upload_image_img').attr('src', attachment.url);
+                hidden_input.val(attachment.url);
+                img_up.show();
+                img_up.attr('src', attachment.url);
             });
 
             // Open the modal.
@@ -32,9 +33,11 @@
         });
 
         $('.remove_image_button').on('click', function () {
-            $('.upload_image').val('');
-            $('.upload_image_img').hide();
-            $('.remove_image_button').hide();
+            var hidden_input = $(this).parent().find('.upload_image');
+            var img_up = $(this).parent().find('.upload_image_img');
+            hidden_input.val('');
+            img_up.hide();
+            $(this).hide();
         });
     });
 })(jQuery);
