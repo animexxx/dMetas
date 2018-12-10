@@ -33,6 +33,7 @@ require_once 'inc/metas/metaAbstract.php';
 require_once 'inc/metas/metaBox.php';
 require_once 'inc/metas/text/text.php';
 require_once 'inc/metas/textarea/textarea.php';
+require_once 'inc/metas/editor/editor.php';
 require_once 'inc/metas/image/image.php';
 require_once 'inc/metas/gallery/gallery.php';
 
@@ -41,7 +42,7 @@ require_once 'inc/dMetas_assets.php';
 
 //defined function get_field();
 
-if (!function_exists('get_field')) {
+if (function_exists('get_field')) {
     function get_field($key)
     {
         global $post;

@@ -68,6 +68,9 @@ class metaBox
                 case 'textarea':
                     $this->meta_element_object[] = new \dMetas\metas\textarea\textarea($meta);
                     break;
+                case 'editor':
+                    $this->meta_element_object[] = new \dMetas\metas\editor\editor($meta);
+                    break;
                 case 'image':
                     $this->meta_element_object[] = new \dMetas\metas\image\image($meta);
                     break;

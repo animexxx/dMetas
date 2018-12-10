@@ -6,11 +6,11 @@
  * Date: 12/7/18
  * Time: 20:31
  */
-namespace dMetas\metas\text;
+namespace dMetas\metas\editor;
 
 use dMetas\metas\metaAbstract;
 
-class text extends metaAbstract
+class editor extends metaAbstract
 {
     public function save($post_id)
     {
@@ -26,19 +26,17 @@ class text extends metaAbstract
     {
         //get exist value from database
         $this->post_id = $post_id;
-        $value = $this->get();
-
+        $content = $this->get();
+        $editor_id = $this->meta_key;
         // Display the form, using the current value.
         ?>
         <div class="dMetas_box">
             <label>
                 <?php _e($this->label); ?>
             </label>
-            <input type="text" class="dMetas_field" name="<?php echo $this->meta_key ?>"
-                   value="<?php echo esc_attr($value); ?>"/>
         </div>
         <?php
-
+        wp_editor($content, $editor_id, array('textarea_rows' => 5));
 
     }
 }
