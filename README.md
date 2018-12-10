@@ -19,6 +19,11 @@ $metas = array(
                 'meta_type' => 'textarea',
             ],
             [
+                'name' => 'txt3',
+                'label' => 'Editor',
+                'meta_type' => 'editor',
+            ],
+            [
                 'name' => 'img1',
                 'label' => 'Image upload',
                 'meta_type' => 'image',
