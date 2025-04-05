@@ -36,4 +36,5 @@ $metas = array(
         )
     ]
 );
+dMetas_setMeta($metas);
 ```
