@@ -7,11 +7,11 @@
  * Time: 20:31
  */
 
-namespace dMetas\metas\textarea;
+namespace dMetas\metas\number;
 
 use dMetas\metas\metaAbstract;
 
-class textarea extends metaAbstract
+class number extends metaAbstract
 {
     public function save($post_id)
     {
@@ -36,8 +36,8 @@ class textarea extends metaAbstract
             <label>
                 <?php _e($this->label); ?>
             </label>
-            <textarea type="text" class="dMetas_field"
-                name="<?php echo $this->meta_key ?>" rows="3"><?php echo esc_attr($value); ?></textarea>
+            <input type="number" class="dMetas_field" name="<?php echo $this->meta_key ?>"
+                value="<?php echo esc_attr($value); ?>" />
         </div>
 <?php
     }

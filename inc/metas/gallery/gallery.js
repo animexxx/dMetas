@@ -18,20 +18,17 @@
         });
         $('.gallery_box').disableSelection();
 
-        $('button.del').on('click', function () {
+        $('body').on('click', 'button.del', function (e) {
             var gal_ele = $(this).parent();
             var id = gal_ele.data('id');
-            var hidden_val = gal_ele.parent().parent().find('.upload_m_image');
+            var hidden_val = gal_ele.parents('.dMetas_box').find('.upload_m_image');
             var array = hidden_val.val().split(",").map(Number);
-            for (var i = 0; i < array.length - 1; i++) {
-                if (array[i] === id) {
-                    array.splice(i, 1);
-                }
-            }
+            array = array.filter(item => item != id);
             hidden_val.val(array.join(','));
             gal_ele.remove();
             return false;
         });
+
 
         $('.upload_m_image_button').on('click', function () {
             //define var

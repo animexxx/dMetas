@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Duynv
@@ -52,7 +53,7 @@ class metaBox
         $this->process();
         //default hook
         add_action('add_meta_boxes', array($this, 'hook'), 10, 2);
-        add_action('save_post', array($this, 'save'), 10, 2);
+        add_action('save_post', array($this, 'save'));
     }
 
     /*
@@ -61,9 +62,16 @@ class metaBox
     protected function process()
     {
         foreach ($this->meta_element_string as $meta) {
+
             switch ($meta['meta_type']) {
                 case 'text':
                     $this->meta_element_object[] = new \dMetas\metas\text\text($meta);
+                    break;
+                case 'number':
+                    $this->meta_element_object[] = new \dMetas\metas\number\number($meta);
+                    break;
+                case 'checkbox':
+                    $this->meta_element_object[] = new \dMetas\metas\checkbox\checkbox($meta);
                     break;
                 case 'textarea':
                     $this->meta_element_object[] = new \dMetas\metas\textarea\textarea($meta);
@@ -90,7 +98,7 @@ class metaBox
             $this->meta_id,
             __($this->meta_title),
             array($this, 'render'),
-            $this->post_type
+            $this->post_type, //post type
         );
     }
 
@@ -100,15 +108,6 @@ class metaBox
     public function render($post)
     {
         //little hack style
-        ?>
-        <style>
-            #
-            <?php echo $this->meta_id?>
-            .inside {
-                padding: 0 !important;
-            }
-        </style>
-        <?php
         foreach ($this->meta_element_object as $key => $meta_e) {
             $meta_e->render($post->ID);
         }
@@ -120,7 +119,7 @@ class metaBox
     /*
      * Save meta box value
      * */
-    public function save($post_id, $post)
+    public function save($post_id)
     {
         //save data
         // Add nonce for security and authentication.
@@ -131,6 +130,7 @@ class metaBox
         if (!wp_verify_nonce($nonce_name, $nonce_action)) {
             return;
         }
+
 
         // Check if user has permissions to save data.
         if (!current_user_can('edit_post', $post_id)) {
@@ -147,10 +147,10 @@ class metaBox
             return;
         }
 
+
         //save data for each meta element
         foreach ($this->meta_element_object as $meta_e) {
             $meta_e->save($post_id);
         }
     }
-
 }

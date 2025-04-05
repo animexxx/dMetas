@@ -7,15 +7,18 @@
  * Time: 20:31
  */
 
-namespace dMetas\metas\textarea;
+namespace dMetas\metas\checkbox;
 
 use dMetas\metas\metaAbstract;
 
-class textarea extends metaAbstract
+class checkbox extends metaAbstract
 {
     public function save($post_id)
     {
-        if (!isset($_POST[$this->meta_key])) return;
+        if (!isset($_POST[$this->meta_key])) {
+            update_post_meta($post_id, $this->meta_key, 0);
+            return;
+        }
         //get data from form
         $val = $_POST[$this->meta_key];
         //save data to database
@@ -36,8 +39,8 @@ class textarea extends metaAbstract
             <label>
                 <?php _e($this->label); ?>
             </label>
-            <textarea type="text" class="dMetas_field"
-                name="<?php echo $this->meta_key ?>" rows="3"><?php echo esc_attr($value); ?></textarea>
+            <input type="checkbox" class="dMetas_field" name="<?php echo $this->meta_key ?>"
+                value="1" <?php if ($value) echo 'checked="checked"' ?> />
         </div>
 <?php
     }

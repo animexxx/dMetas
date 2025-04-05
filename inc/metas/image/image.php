@@ -6,6 +6,7 @@
  * Date: 12/7/18
  * Time: 20:31
  */
+
 namespace dMetas\metas\image;
 
 use dMetas\metas\metaAbstract;
@@ -20,6 +21,7 @@ class image extends metaAbstract
 
     public function save($post_id)
     {
+        if (!isset($_POST[$this->meta_key])) return;
         //get data from form
         $val = $_POST[$this->meta_key];
         //save data to database
@@ -44,7 +46,7 @@ class image extends metaAbstract
         $value = $this->get();
 
         // Display the form, using the current value.
-        ?>
+?>
         <div class="dMetas_box">
             <label>
                 <?php _e($this->label); ?>
@@ -54,11 +56,11 @@ class image extends metaAbstract
                 <img class="upload_image_img" src="<?php echo $value ?>" width="200">
             <?php endif ?>
             <img class="upload_image_img" src="" width="200">
-            <input class="upload_image_button" type="button" value="Upload Image"/>
+            <input class="upload_image_button" type="button" value="Upload Image" />
             <?php if ($value): ?>
-                <input class="remove_image_button" type="button" value="Remove Image"/>
+                <input class="remove_image_button" type="button" value="Remove Image" />
             <?php endif ?>
         </div>
-        <?php
+<?php
     }
 }

@@ -14,6 +14,7 @@ class text extends metaAbstract
 {
     public function save($post_id)
     {
+        if (!isset($_POST[$this->meta_key])) return;
         //get data from form
         $val = $_POST[$this->meta_key];
         //save data to database
@@ -38,7 +39,5 @@ class text extends metaAbstract
                    value="<?php echo esc_attr($value); ?>"/>
         </div>
         <?php
-
-
     }
 }

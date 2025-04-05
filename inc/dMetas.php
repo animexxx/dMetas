@@ -1,7 +1,7 @@
 <?php
 //defined custom meta array
 
-//txt
+//text
 //textarea
 //image
 //editor
@@ -12,47 +12,20 @@ $metas = array(
         'post_type' => 'post',
         'meta_elements' => array(
             [
-                'name' => 'txt1',
-                'label' => 'Labels',
+                'name' => 'cc',
+                'label' => 'Custom product label',
                 'meta_type' => 'text',
             ],
             [
-                'name' => 'txt2',
-                'label' => 'Labels 2',
-                'meta_type' => 'editor',
-            ],
-            [
-                'name' => 'txt2',
-                'label' => 'Labels',
-                'meta_type' => 'textarea',
-            ],
-            [
-                'name' => 'img1',
-                'label' => 'Labels',
+                'name' => 'ck2',
+                'label' => 'Custom product photo',
                 'meta_type' => 'image',
             ],
             [
-                'name' => 'gallery1',
-                'label' => 'Labels',
+                'name' => 'ck4',
+                'label' => 'Custom gallery',
                 'meta_type' => 'gallery',
             ],
-            [
-                'name' => 'repeat1',
-                'label' => 'Labels',
-                'meta_type' => 'repeater',
-                'construcre' => [
-                    [
-                        'name' => 'txt1',
-                        'label' => 'Labels',
-                        'meta_type' => 'text',
-                    ],
-                    [
-                        'name' => 'txt1',
-                        'label' => 'Labels',
-                        'meta_type' => 'text',
-                    ]
-                ]
-            ]
         )
     ]
 
@@ -70,4 +43,4 @@ function dMetas_setMeta($metas)
     }
 }
 
-dMetas_setMeta($metas);
+//dMetas_setMeta($metas);

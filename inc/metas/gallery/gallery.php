@@ -6,6 +6,7 @@
  * Date: 12/7/18
  * Time: 20:31
  */
+
 namespace dMetas\metas\gallery;
 
 use dMetas\metas\metaAbstract;
@@ -20,6 +21,7 @@ class gallery extends metaAbstract
 
     public function save($post_id)
     {
+        if (!isset($_POST[$this->meta_key])) return;
         //get data from form
         $val = $_POST[$this->meta_key];
         //save data to database
@@ -52,27 +54,27 @@ class gallery extends metaAbstract
         }
 
         // Display the form, using the current value.
-        ?>
+?>
         <div class="dMetas_box">
             <label>
                 <?php _e($this->label); ?>
             </label>
             <input type="hidden" class="upload_m_image" name="<?php echo $this->meta_key ?>"
-                   value="<?php echo $value ?>">
+                value="<?php echo $value ?>">
             <div class="gallery_box">
                 <?php if ($img_arr):
                     foreach ($img_arr as $id => $img):
                         if (!$img) continue;
-                        ?>
+                ?>
                         <div class="gal_ele" data-id="<?php echo $id ?>"><img src="<?php echo $img[0] ?>" alt="">
                             <button class="del">X</button>
                         </div>
-                        <?php
+                <?php
                     endforeach;
                 endif; ?>
             </div>
-            <input class="upload_m_image_button" type="button" value="Edit Gallery"/>
+            <input class="upload_m_image_button" type="button" value="Edit Gallery" />
         </div>
-        <?php
+<?php
     }
 }

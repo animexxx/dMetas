@@ -6,11 +6,12 @@
  * Date: 12/7/18
  * Time: 20:19
  */
+
 namespace dMetas\metas;
 
 abstract class metaAbstract
 {
-    protected $prefix = 'dMetas_';
+    protected $prefix = '';
     protected $name;
     protected $label;
     protected $meta_type;
